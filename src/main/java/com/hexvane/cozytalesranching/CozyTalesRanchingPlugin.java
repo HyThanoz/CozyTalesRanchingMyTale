@@ -4,7 +4,6 @@ import com.hexvane.cozytalesranching.animal.AnimalFeature;
 import com.hexvane.cozytalesranching.animal.Ranch;
 import com.hexvane.cozytalesranching.command.RanchCommand;
 import com.hexvane.cozytalesranching.config.RanchConfig;
-import com.hexvane.cozytalesranching.generated.HstatsBuildMetadata;
 import com.hexvane.cozytalesranching.house.HouseFeature;
 import com.hexvane.cozytalesranching.species.SpeciesRegistry;
 import com.hexvane.cozytalesranching.taming.TamingFeature;
@@ -43,21 +42,8 @@ public final class CozyTalesRanchingPlugin extends JavaPlugin {
         instance = this;
         RanchConfig.bind(config.get());
 
-        String hstatsModUuid = HstatsBuildMetadata.HSTATS_MOD_UUID;
+        // MyTale: HStats metrics (hstats.dev) removed. MyTale sends no server or player data to third parties.
         String modVersion = this.getManifest().getVersion().toString();
-        if (!hstatsModUuid.isBlank()) {
-            // HStats posts to hstats.dev from its constructor with no timeout; never on the setup thread, so a slow or
-            // unreachable metrics host cannot hold the server's boot. HStats.java itself must stay unmodified (its licence).
-            Thread metrics = new Thread(() -> {
-                try {
-                    new HStats(hstatsModUuid, modVersion);
-                } catch (RuntimeException e) {
-                    getLogger().atWarning().log("HStats metrics did not start: %s", e.toString());
-                }
-            }, "CozyRanch-HStats");
-            metrics.setDaemon(true);
-            metrics.start();
-        }
 
         RanchPermissions.register();
         SpeciesRegistry.load(getDataDirectory());

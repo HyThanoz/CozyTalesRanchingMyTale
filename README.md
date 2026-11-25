@@ -97,6 +97,6 @@ Java 25 and Hytale installed through the launcher.
 
 The jar is `build\libs\CozyTalesRanching-<version>.jar`.
 
-Metrics go to [hstats.dev](https://hstats.dev) only when `COZYTALESRANCHING_HSTATS_MOD_UUID` (or `hstats_mod_uuid` in `gradle.properties`) is set at build time. Only change the package name in `HStats.java`, never its metrics logic, per the HStats license.
+This MyTale (mytale.es) build sends no metrics: HStats was removed. The changes from Hexvane's original are listed in `src/main/resources/MYTALE-CAMBIOS.txt`.
 
 See [CHANGELOG.md](CHANGELOG.md) for what changed in each version.

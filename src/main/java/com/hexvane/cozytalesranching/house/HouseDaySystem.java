@@ -53,6 +53,11 @@ final class HouseDaySystem extends TickingSystem<EntityStore> {
     /** A resident that could not come out (door blocked) tries again after this. */
     private static final long OUT_RETRY_MS = 30_000;
     private static final Map<UUID, Long> OUT_RETRY_AT = new ConcurrentHashMap<>();
+    /**
+     * MyTale: at most this many residents come out per world per pass. Spawning every resident in the same pass at
+     * dawn caused lag spikes (NPCPlugin.spawnEntity); the rest come out on the next passes.
+     */
+    private static final int MAX_OUT_PER_PASS = 4;
 
     private final PersistentHouseRegistry houses;
     private final Map<String, Float> elapsed = new ConcurrentHashMap<>();
@@ -99,6 +104,8 @@ final class HouseDaySystem extends TickingSystem<EntityStore> {
         boolean checkBlocks = passes.merge(world.getName(), 1, Integer::sum) % BLOCK_CHECK_PASSES == 0;
         SectionReader reader = checkBlocks ? new SectionReader(world.getChunkStore()) : null;
         long now = System.currentTimeMillis();
+        // local to this pass: the system serves several worlds, each on its own thread
+        int[] outBudget = {MAX_OUT_PER_PASS};
         for (HouseRecord house : houses.inWorld(world.getName())) {
             try {
                 if (!HouseBlocks.isLoaded(world, house.doorX, house.doorZ) || !HouseBlocks.isLoaded(world, house.x, house.z)) continue;
@@ -106,7 +113,7 @@ final class HouseDaySystem extends TickingSystem<EntityStore> {
                     HousePlacement.houseBroken(world, store, house, null);
                     continue;
                 }
-                if (phase == Phase.DAY) day(world, store, house, cycleDay);
+                if (phase == Phase.DAY) day(world, store, house, cycleDay, outBudget);
                 else night(world, store, house, cycleDay, now);
             } catch (RuntimeException e) {
                 LOG.log(Level.WARNING, "House pass failed for " + house.houseId, e);
@@ -125,7 +132,8 @@ final class HouseDaySystem extends TickingSystem<EntityStore> {
         return true;
     }
 
-    private void day(@Nonnull World world, @Nonnull Store<EntityStore> store, @Nonnull HouseRecord house, long cycleDay) {
+    private void day(@Nonnull World world, @Nonnull Store<EntityStore> store, @Nonnull HouseRecord house, long cycleDay,
+            @Nonnull int[] outBudget) {
         boolean forcedMorning = FORCED_MORNING.remove(house.houseId);
         if (forcedMorning || HouseRules.morningDue(house.lastMorningDay, cycleDay)) {
             HouseDayHooks.fireMorning(world, house, Ranch.animals().inHouse(house.houseId));
@@ -142,6 +150,8 @@ final class HouseDaySystem extends TickingSystem<EntityStore> {
                 if (!doorTicking) continue;
                 long now = System.currentTimeMillis();
                 if (now < OUT_RETRY_AT.getOrDefault(r.animalId, 0L)) continue;
+                if (outBudget[0] <= 0) continue; // budget used up: comes out on a later pass
+                outBudget[0]--;
                 if (HouseResidents.bringOut(world, store, house, r)) {
                     OUT_RETRY_AT.remove(r.animalId);
                     HouseResidents.debug("Ranch animal " + r.animalId + " came out of house " + house.houseId + " (generation " + r.generation + ")");

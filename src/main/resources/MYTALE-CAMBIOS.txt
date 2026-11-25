@@ -1,10 +1,19 @@
 Cozy Tales: Ranching, by Hexvane. Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
-Original: https://www.curseforge.com/hytale/mods (project 1766265) - source: https://github.com/gchougland/CozyTalesRanching
+Original: https://www.curseforge.com/hytale/mods/cozy-tales-ranching (CurseForge project 1766265)
+Source: https://github.com/gchougland/CozyTalesRanching
 This is a modified version by MyTale (mytale.es). The changes are listed below.
 
 CozyTalesRanching, de Hexvane (Cozy Tales: Ranching), CC BY 4.0.
-Version modificada por MyTale (mytale.es). Cambios respecto del original:
+Version modificada por MyTale (mytale.es). Cambios respecto del original 0.6.4:
 
+0.6.4-mytale.2
+- Quitadas las metricas HStats (api.hstats.dev): fuera HStats.class y HstatsBuildMetadata.class, y la
+  clase principal (CozyTalesRanchingPlugin) ya no las arranca. MyTale no envia datos del servidor ni de
+  jugadores a terceros.
+- HouseDaySystem: como mucho 4 animales salen de sus casas por mundo y por pasada de 1 s. Antes salian todos
+  a la vez al amanecer y el servidor daba tirones; los demas salen en las pasadas siguientes.
+
+0.6.4-mytale.1
 - Receta de CozyRanch_House_FossilNest: pide Plant_Fern_Winter (Large Fern) en vez de Plant_Fern. Plant_Fern no
   se genera en el mundo, asi que la casa del Tetrabird no se podia fabricar.
 - Español (es-ES) y portugues (pt-BR) revisados: traduccion automatica corregida y las claves nuevas de 0.6.3
