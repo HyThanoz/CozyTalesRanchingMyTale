@@ -15,7 +15,7 @@ Button #CardButton {
   Label #CardName {
     HitTestVisible: false;
     Anchor: (Top: 10);
-    Style: $J.@CardNameStyle;
+    Style: (...$J.@CardNameStyle, ShrinkTextToFit: true, MinShrinkTextToFitFontSize: 11);
     Text: "";
   }
 }

@@ -1,11 +1,11 @@
-items.CozyRanch_RanchingBench.name=Banco de rancho
-items.CozyRanch_RanchingBench.description=Una mesa de rancho resistente para casitas de animales, alimento, herramientas de cuidado, juguetes y decoración de rancho. Úsala para construir casas más grandes.
+items.CozyRanch_RanchingBench.name=Mesa de Trabajo del Ranchero
+items.CozyRanch_RanchingBench.description=Una mesa de rancho resistente para casas de animales, alimento, herramientas de cuidado, juguetes y decoración. Mejórala para construir las casas más grandes.
 benchCategories.houses=Casas de animales
 benchCategories.feedCare=Alimentación y cuidado
 benchCategories.toysDecor=Juguetes y decoración
-creative.tab=Cuentos acogedores: La vida en el rancho
+creative.tab=Cozy Tales: Ranching
 creative.houses=Casas de animales
-creative.food=Alimentos y piensos
+creative.food=Alimento y comida
 creative.produce=Productos animales
-creative.tools=Herramientas de rancho
+creative.tools=Herramientas del rancho
 creative.decor=Juguetes y decoración

@@ -1,0 +1,15 @@
+Cozy Tales: Ranching, by Hexvane. Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+Original: https://www.curseforge.com/hytale/mods (project 1766265) - source: https://github.com/gchougland/CozyTalesRanching
+This is a modified version by MyTale (mytale.es). The changes are listed below.
+
+CozyTalesRanching, de Hexvane (Cozy Tales: Ranching), CC BY 4.0.
+Version modificada por MyTale (mytale.es). Cambios respecto del original:
+
+- Receta de CozyRanch_House_FossilNest: pide Plant_Fern_Winter (Large Fern) en vez de Plant_Fern. Plant_Fern no
+  se genera en el mundo, asi que la casa del Tetrabird no se podia fabricar.
+- Español (es-ES) y portugues (pt-BR) revisados: traduccion automatica corregida y las claves nuevas de 0.6.3
+  traducidas (y las de 0.6.4).
+- HouseResidentRow.ui: el boton Name de cada residente pasa de 76 a 96 de ancho para que quepa en español.
+- JournalCard.ui: el nombre de la ficha del Diario achica la letra si no cabe (Leopardo de las Nieves).
+
+Todo lo demas es el jar original de Hexvane sin tocar.

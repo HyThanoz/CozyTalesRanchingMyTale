@@ -122,7 +122,7 @@ Button #ResidentRow {
     }
 
     $C.@SmallSecondaryTextButton #RNameButton {
-      @Anchor = (Width: 76, Right: 14);
+      @Anchor = (Width: 96, Right: 14);
       Visible: false;
     }
 

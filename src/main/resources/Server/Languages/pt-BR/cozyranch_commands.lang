@@ -1,5 +1,5 @@
-commands.cozyranch.root.desc=Contos Aconchegantes: Comandos de Criação de Gado
+commands.cozyranch.root.desc=Comandos do Cozy Tales: Ranching
 commands.cozyranch.ping.desc=Confira se Cozy Tales: Ranching está carregado
-commands.cozyranch.ping.success=Contos Aconchegantes: A vida no rancho está dando certo.
+commands.cozyranch.ping.success=Cozy Tales: Ranching está funcionando.
 commands.cozyranch.reload.desc=Recarregue os arquivos de configuração do rancho e de espécies.
 commands.cozyranch.reload.done=Configuração do rancho e espécies recarregadas.
