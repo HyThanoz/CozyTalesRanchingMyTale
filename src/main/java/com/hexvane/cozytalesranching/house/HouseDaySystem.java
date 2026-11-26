@@ -57,7 +57,7 @@ final class HouseDaySystem extends TickingSystem<EntityStore> {
      * MyTale: at most this many residents come out per world per pass. Spawning every resident in the same pass at
      * dawn caused lag spikes (NPCPlugin.spawnEntity); the rest come out on the next passes.
      */
-    private static final int MAX_OUT_PER_PASS = 4;
+    private static final int MAX_OUT_PER_PASS = 10;
 
     private final PersistentHouseRegistry houses;
     private final Map<String, Float> elapsed = new ConcurrentHashMap<>();

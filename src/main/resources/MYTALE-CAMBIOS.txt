@@ -10,7 +10,7 @@ Version modificada por MyTale (mytale.es). Cambios respecto del original 0.6.4:
 - Quitadas las metricas HStats (api.hstats.dev): fuera HStats.class y HstatsBuildMetadata.class, y la
   clase principal (CozyTalesRanchingPlugin) ya no las arranca. MyTale no envia datos del servidor ni de
   jugadores a terceros.
-- HouseDaySystem: como mucho 4 animales salen de sus casas por mundo y por pasada de 1 s. Antes salian todos
+- HouseDaySystem: como mucho 10 animales salen de sus casas por mundo y por pasada de 1 s. Antes salian todos
   a la vez al amanecer y el servidor daba tirones; los demas salen en las pasadas siguientes.
 
 0.6.4-mytale.1
